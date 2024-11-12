@@ -66,6 +66,7 @@ plt.title("KNN Accuracy vs Number of Neighbors MNIST 1")
 plt.legend()
 plt.grid()
 plt.show()
+plt.savefig("MNIST1_KNN")
 
 plt.figure(figsize=(12, 5))
 plt.plot(Min_sample, R_train_RF, label="Training Accuracy")
@@ -76,6 +77,7 @@ plt.title("Random Forest Accuracy vs Min Sample Leaf MNIST 1")
 plt.legend()
 plt.grid()
 plt.show()
+plt.savefig("MNIST1_RF")
 
 # Print the best K for KNN
 best_k = Neighbours[np.argmax(R_test_KNN)]

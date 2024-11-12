@@ -31,8 +31,8 @@ X_test = X_test.astype('float64')
 X_test += np.random.uniform(0,255,size = X_test.shape)
 min_train = np.min(X_train)
 max_train = np.max(X_train)
-X_train = (X_train - min_train) / (np.max(X_train) - min_train)  # Normalize X_train based on the maximum value of X_train
-X_test = (X_test - min_train) / (np.max(X_train) - min_train) #  Normalize X_test based on the maximum value of X_train
+X_train = (X_train - min_train) / (max_train - min_train)  # Normalize X_train based on the maximum value of X_train
+X_test = (X_test - min_train) / (max_train - min_train) #  Normalize X_test based on the maximum value of X_train
 
 from sklearn.neighbors import KNeighborsClassifier
 R_train_KNN = []
@@ -69,6 +69,7 @@ plt.title("KNN Accuracy vs Number of Neighbors MNIST 2")
 plt.legend()
 plt.grid()
 plt.show()
+plt.savefig("MNIST2_KNN")
 
 plt.figure(figsize=(12, 5))
 plt.plot(Min_sample, R_train_RF, label="Training Accuracy")
@@ -79,6 +80,7 @@ plt.title("Random Forest Accuracy vs Min Sample Leaf MNIST 2")
 plt.legend()
 plt.grid()
 plt.show()
+plt.savefig("MNIST2_RF")
 
 # Print the best K for KNN
 best_k = Neighbours[np.argmax(R_test_KNN)]

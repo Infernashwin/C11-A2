@@ -32,8 +32,8 @@ X_test = X_test.astype('float64')
 X_test += np.random.uniform(0,255,size = X_test.shape)
 min_train = np.min(X_train)
 max_train = np.max(X_train)
-X_train = (X_train - min_train) / (np.max(X_train) - min_train)  # Normalize X_train based on the maximum value of X_train
-X_test = (X_test - min_train) / (np.max(X_train) - min_train) #  Normalize X_test based on the maximum value of X_train
+X_train = (X_train - min_train) / (max_train - min_train)  # Normalize X_train based on the maximum value of X_train
+X_test = (X_test - min_train) / (max_train - min_train) #  Normalize X_test based on the maximum value of X_train
 Noise = [str(index) for index in np.random.choice(10,20000, p =[0.25,0.05,0.05,0.05,0.08,0.17,0.13,0.1,0.12,0.00])]
 y_train[:20000] = Noise
 
@@ -72,6 +72,7 @@ plt.title("KNN Accuracy vs Number of Neighbors MNIST 3")
 plt.legend()
 plt.grid()
 plt.show()
+plt.savefig("MNIST3_KNN")
 
 plt.figure(figsize=(12, 5))
 plt.plot(Min_sample, R_train_RF, label="Training Accuracy")
@@ -82,6 +83,7 @@ plt.title("Random Forest Accuracy vs Min Sample Leaf MNIST 3")
 plt.legend()
 plt.grid()
 plt.show()
+plt.savefig("MNIST3_RF")
 
 # Print the best K for KNN
 best_k = Neighbours[np.argmax(R_test_KNN)]
